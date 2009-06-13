@@ -1,17 +1,22 @@
 class RecursiveChopper
   def chop(needle, haystack, floor = 0, ceiling = nil)
-    ceiling = haystack.size == 0 ? 0 : haystack.size - 1  if ceiling.nil?
+    return -1 if haystack.empty?
+
+    ceiling = haystack.size - 1  if ceiling.nil?
     index = floor + (((ceiling - floor) / 2.0).ceil)
     
     val = haystack[index]
-    return -1 if val.nil?
-    return index if val == needle
-    return -1 if floor == ceiling
 
-    if val > needle
+    if val == needle
+      return index
+    elsif floor == ceiling
+      return -1
+    elsif val > needle
       return chop(needle, haystack, floor, index - 1)
-    else
+    elsif val < needle
       return chop(needle, haystack, index, ceiling)
+    else # will this ever get hit?  I don't think so
+      return -1
     end
   end
 end

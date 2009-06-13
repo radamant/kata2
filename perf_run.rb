@@ -6,7 +6,7 @@ TIMES = 10000
 puts "Generating Values"
 values = []
 1.upto(COUNT) {|i| values << i}
-needle = rand(COUNT)
+needle = COUNT - 1 
 
 chopper = CURRENT_CHOPPER.new
 
