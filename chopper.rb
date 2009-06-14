@@ -1,6 +1,6 @@
 class Chopper
   def self.get_index(floor, ceiling)
-    return floor + (((ceiling - floor) / 2.0).ceil)
+    return floor + (ceiling - floor).quo(2).ceil
   end
 end
 
