@@ -9,7 +9,7 @@ class RecursiveChopper
     return -1 if haystack.empty?
 
     ceiling = haystack.size - 1  if ceiling.nil?
-    index = floor + (((ceiling - floor) / 2.0).ceil)
+    index = Chopper.get_index(floor, ceiling)
     
     val = haystack[index]
 
@@ -27,9 +27,8 @@ class RecursiveChopper
   end
 end
 
-class NonRecursiveChopper < Chopper
+class NonRecursiveChopper
   def chop(needle, haystack)
-    # puts "Searching for #{needle} in #{haystack.join(',')}"
     return -1 if haystack.empty?
     
     ceiling = haystack.size - 1
@@ -38,18 +37,14 @@ class NonRecursiveChopper < Chopper
       index = Chopper.get_index(floor, ceiling)
       value = haystack[index]
       
-      
       if value == needle
         return index
       elsif floor == ceiling
         return -1
       elsif value > needle
-
         ceiling = index - 1
       elsif value < needle
-
         floor = index
-
       else
         return -1
       end
