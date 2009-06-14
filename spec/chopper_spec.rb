@@ -2,10 +2,7 @@ require 'spec'
 require 'spec/autorun'
 require File.join(File.dirname(__FILE__), '..', 'chopper')
 
-describe "choppper" do
-  before(:each) do
-    @chopper = CURRENT_CHOPPER.new
-  end
+shared_examples_for "any chopper" do
   
   it "should return -1 when the array is empty" do
     @chopper.chop(3,[]).should == -1
@@ -73,4 +70,18 @@ describe "choppper" do
       @chopper.chop(7, @h).should == 3
     end
   end
+end
+
+describe RecursiveChopper do
+  before(:each) do
+    @chopper = RecursiveChopper.new
+  end
+  it_should_behave_like "any chopper"
+end
+
+describe NonRecursiveChopper do
+  before(:each) do
+    @chopper = NonRecursiveChopper.new
+  end
+  it_should_behave_like "any chopper"
 end
