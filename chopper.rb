@@ -6,7 +6,7 @@ class Chopper
 
 
   def self.implementations
-    [RecursiveChopper, RecursiveChopper2,  NonRecursiveChopper]
+    [RecursiveChopper, RecursiveChopper2,  IterativeChopper]
   end
 end
 
@@ -60,7 +60,7 @@ class RecursiveChopper2
 end
 
 # First stab at an iterative chopper
-class NonRecursiveChopper
+class IterativeChopper
   def chop(needle, haystack)
     return -1 if haystack.empty?
     

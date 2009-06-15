@@ -88,9 +88,9 @@ describe RecursiveChopper2 do
 end
 
 
-describe NonRecursiveChopper do
+describe IterativeChopper do
   before(:each) do
-    @chopper = NonRecursiveChopper.new
+    @chopper = IterativeChopper.new
   end
   it_should_behave_like "any chopper"
 end
