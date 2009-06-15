@@ -8,13 +8,16 @@ values = []
 1.upto(COUNT) {|i| values << i}
 needle = COUNT - 1 
 
-chopper = CURRENT_CHOPPER.new
+Chopper.implementations.each do |klass|
+  chopper = klass.new
 
-puts "Starting test with #{CURRENT_CHOPPER} class"
-start = Time.now
-1.upto(10000) do |i|
-  chopper.chop(needle, values)
+  puts "Starting test with #{klass} class"
+  start = Time.now
+  1.upto(10000) do |i|
+    chopper.chop(needle, values)
+  end
+  finish = Time.now
+
+  puts "Searched a #{COUNT} element array #{TIMES} times in #{finish - start} seconds"
+  puts
 end
-finish = Time.now
-
-puts "Searched a #{COUNT} element array #{TIMES} times in #{finish - start} seconds"
