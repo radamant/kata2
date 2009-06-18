@@ -94,3 +94,11 @@ describe IterativeChopper do
   end
   it_should_behave_like "any chopper"
 end
+
+describe IterativeChopper2 do
+  before(:each) do
+    @chopper = IterativeChopper2.new
+  end
+  
+  it_should_behave_like "any chopper"
+end

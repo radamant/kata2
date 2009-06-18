@@ -6,7 +6,7 @@ class Chopper
 
 
   def self.implementations
-    [RecursiveChopper, RecursiveChopper2,  IterativeChopper]
+    [RecursiveChopper, RecursiveChopper2,  IterativeChopper, IterativeChopper2]
   end
 end
 
@@ -82,6 +82,32 @@ class IterativeChopper
         return -1
       end
     end while(floor <= ceiling)
+    
+    return -1
+  end
+end
+
+
+# Like Iterative Chopper, but more refined
+# Built on the same lessons learned from RecursiveChopper2
+class IterativeChopper2
+  def chop(needle, haystack)
+    
+    ceiling = haystack.size - 1
+    floor = 0
+    
+    while(ceiling >= floor)
+      index = (floor + ceiling) / 2
+      value = haystack[index]
+      
+      if value < needle
+        floor = index + 1
+      elsif value > needle
+        ceiling = index -1
+      elsif value == needle
+        return index
+      end
+    end
     
     return -1
   end
